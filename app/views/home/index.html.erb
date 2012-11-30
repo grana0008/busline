@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag 'gmaps4rails' %>
+<div class="row-fluid">
+   <div class="span12">
+ 	<%= gmaps("markers" => {"data" => @json, "options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 11} }) %> 
+		<% content_for :scripts do %>
+          <%= javascript_include_tag "home" %>
+    <% end %>
+	</div>
+</div>
+<p></p>
+<div class="row-fluid">
+	<div class="span4">
+		<form id="search2"class="form-search">
+		<%= form_tag root_path, class: 'form-search', method: :get do %>
+		    <%= select_tag :landmark, options_from_collection_for_select(Landmark.all, :id, :name, params[:landmark]), :prompt => "เลือก สถานที่น่าสนใจ", class: 'input-large' %>
+			<%= submit_tag 'ค้นหา', id: 'search2',class: 'btn btn-info' %>
+		<% end %>
+		</form>
+	</div>
+	<div class="span4">
+	</div>
+	<div class="span4">
+		<form id="search1"class="form-search"> 
+		<%= form_tag root_path, class: 'form-search', method: :get do %> 
+		    <%= select_tag :query, options_from_collection_for_select(Line.all, :id, :name, params[:query]), :prompt => "เลือกเส้นทาง", class: 'input-large' %> 
+			<%= submit_tag 'ค้นหา',id: 'search', class: 'btn btn-info' %> 
+		<% end %> 
+		</form>
+	</div>
+</div>
+<div class="row-fluid">
+	<div id='bus-data' class="span12">
+		<%= render partial: 'lines' %>
+	</div> 
+</div>

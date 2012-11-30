@@ -1,0 +1,18 @@
+<div class="row">
+ 	<div class="span12">
+		<%= semantic_form_for [:admin, @landmark] do |f| %>
+			<%= f.inputs do %>
+				<%= f.input :busstops, :as => :check_boxes %>
+			    <%= f.input :name %>
+			    <%= f.input :latitude %>
+			    <%= f.input :longitude %>
+			    <%= f.input :gmaps %>
+			<% end %>
+		    	<%= f.submit %>
+		<% end %>
+ 	</div>
+ 	<div class="span6">
+	    <%= gmaps( map_options: { id: 'map_select', "detect_location" => true, "center_on_user" => true, "zoom" => 11, :class => "gmaps4rails_map1"  }) %>
+	    <%= javascript_include_tag "landmarks" %>
+  	</div>
+</div>

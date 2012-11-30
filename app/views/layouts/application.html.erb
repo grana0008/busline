@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Busline</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="bg-image">
+	<%= render :partial => "layouts/shared/navigation" %>
+	<div class='container'>
+	  <%= yield %>
+	</div>
+	<%= yield :scripts %>
+</body>
+</html>

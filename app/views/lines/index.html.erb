@@ -1,0 +1,20 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="teststyle.css">
+	<p>
+		<h1>Line Shows</h1>
+	</p>
+	<p>
+		<%= link_to "Create", new_line_path %>
+	</p>
+	<table class="table table-hover">
+	<tr>
+		<td>Line Name</td>
+		<td>Total Stop</td>
+	</tr>
+		<% @lines.each do |line| %>
+	<tr>
+		<td><%= line.name %></td>
+		<td><%= line.stops_count %></td>
+	</tr>
+	<% end %>
+	</table>

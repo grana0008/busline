@@ -1,0 +1,27 @@
+<table class="table table-hover">
+	<tr>
+		<th><center>รถเมล์</center></th>
+		<th><center>สี</center></th>
+		<th><center>ปรับอากาศ</center></th>
+		<th><center>เส้นทางรถ</center></th>
+		<th><center>เวลารถ</center></th>
+	</tr>
+	<% @lines.each do |line| %>
+		<tr>
+			<td colspan='5'>
+				<%= link_to line.name, :controller => "home", :action => "index",:query => line.id %>
+			</td>
+		</tr>
+		<% line.buses.each do |bus| %>
+			<tr>
+				<td><center><%= bus.busname %></center></td>
+				<td><center><%= bus.color %></center></td>
+				<td><center><%= bus.air_condition ? "ปรับอากาศ" : "ไม่ปรับอากาศ" %></center></td>
+				<td><center><%= bus.line.name %></center></td>
+				<td><center><%= bus.startwork %></center></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+<%= paginate @lines,:outer_window => 3 ,:remote => true %>
+<br>

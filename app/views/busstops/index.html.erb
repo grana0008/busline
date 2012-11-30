@@ -1,0 +1,22 @@
+<small><%= link_to "New", new_busstop_path %></small>
+<table class="table table-hover">
+	<tr>		
+		<td>Busstops Name</td>
+		<td>latitude</td>
+		<td>longitude</td>
+		<td>Gmaps</td>
+		<td>Line ID</td>
+		<td></td>
+	</tr>
+	<% @busstops.each do |busstop| %>
+		<tr>
+			<td><%= busstop.name %></td>
+			<td><%= busstop.latitude %></td>
+			<td><%= busstop.longitude %></td>
+			<td><%= busstop.gmaps ? "true" : "false" %></td>
+			<td><%= busstop.line_id %></td>
+			<td><%= link_to "Edit", edit_busstop_path(busstop) %></td>
+			<td><%= link_to "Delete", busstop_path(busstop), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>

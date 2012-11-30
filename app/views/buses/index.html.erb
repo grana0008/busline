@@ -1,0 +1,46 @@
+<div class="row-fluid">
+	<div class="span4">
+	</div>
+	<div class="span4">
+		<center><h4>สายรถเมล์</h4></center>
+	</div>
+	<div class="span4">
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span4">
+	</div>
+	<div class="span4">
+	</div>
+	<div class="span4">
+		<%= form_tag buses_path, class: 'form-search', method: :get do %>
+		    <%= select_tag :query, options_for_select(Bus.pluck(:busname).uniq, params[:query]), :prompt => "เลือกรถเมล์" %>
+			<%= submit_tag 'ค้นหา',id: 'search' ,class: 'btn btn-info' %>
+		<% end %>
+	</div>
+</div>
+<div>
+	<table class="table table-hover">
+		<tr>
+			<th>สายรถเมล์</th>		
+			<th>ราคา</th>
+			<th>สีรถ</th>
+			<th>ปรับอากาศ  / ไม่ปรับอากาศ</th>
+			<th>เส้นทางรถเมล์</th>
+			<th>เวลาเดินรถ</th>
+		</tr>
+		<% @buses.each do |bus| %>
+			<tr>
+				<td><%= bus.busname if bus %></td>
+				<td><%= bus.price %></td>
+				<td><%= bus.color %></td>
+				<td><%= bus.air_condition ? "ปรับอากาศ" : "ไม่ปรับอากาศ" %></td>
+				<td><%= bus.line.name %></td>
+				<td><%= bus.startwork if bus %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+<div>
+	<%= paginate @buses %>
+</div>
