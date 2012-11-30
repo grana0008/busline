@@ -47,12 +47,3 @@ test:
   pool: 5
   username: sunya
   password: 123456
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: busline_production
-  host: localhost
-  pool: 5
-  username: sunya
-  password: 123456
